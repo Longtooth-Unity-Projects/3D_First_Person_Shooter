@@ -14,16 +14,21 @@ public class EnemyAI : MonoBehaviour
     bool isProvoked = false;
 
     //cached references
-    NavMeshAgent navMeshAgent;
+    private NavMeshAgent navMeshAgent;
+
+    private Animator animator;
+    private string animatorTriggerMove = "move";
+    private string animatorTriggerIdle = "idle";
+    private string animatorBoolAttack = "attack";
 
 
-    // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         distanceToTarget = Vector3.Distance(target.position, transform.position);
@@ -34,12 +39,14 @@ public class EnemyAI : MonoBehaviour
             isProvoked = true;
     }
 
+
+    //called every update if provoked
     private void EngageTarget()
     {
         bool inAttackRange = distanceToTarget <= navMeshAgent.stoppingDistance;
 
         if (!inAttackRange)
-            ChaseTarget();  //TODO remove this method if no more functionality is added to it
+            ChaseTarget();
         else if (inAttackRange)
             AttackTarget();
     }
@@ -47,17 +54,19 @@ public class EnemyAI : MonoBehaviour
 
     private void ChaseTarget()
     {
+        animator.SetBool(animatorBoolAttack, false);
+        animator.SetTrigger(animatorTriggerMove);
         navMeshAgent.SetDestination(target.position);
     }
 
 
     private void AttackTarget()
     {
-        Debug.Log($"{name} has seeked and is attacking {target.name}");
+        animator.SetBool(animatorBoolAttack, true);
     }
 
 
-    //TODO debugging
+    //TODO debugging and testing
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
