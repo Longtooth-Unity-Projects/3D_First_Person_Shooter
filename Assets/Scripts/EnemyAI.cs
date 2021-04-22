@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] Transform target;
-    [SerializeField] float chaseRange = 5f;
+    [SerializeField] float chaseRange = 25f;
     [SerializeField] float turnSpeed = 5f;
 
     float distanceToTarget = Mathf.Infinity;
@@ -21,6 +21,10 @@ public class EnemyAI : MonoBehaviour
     private string animatorTriggerIdle = "idle";
     private string animatorBoolAttack = "attack";
 
+    private void OnEnable()
+    {
+        EnemyHealth.DamageTaken += OnDamageTaken;
+    }
 
     void Start()
     {
@@ -39,6 +43,16 @@ public class EnemyAI : MonoBehaviour
             isProvoked = true;
     }
 
+    private void OnDisable()
+    {
+        EnemyHealth.DamageTaken -= OnDamageTaken;
+    }
+
+    //custom methods
+    public void OnDamageTaken()
+    {
+        isProvoked = true;
+    }
 
     //called every update if provoked
     private void EngageTarget()
@@ -64,7 +78,7 @@ public class EnemyAI : MonoBehaviour
 
     private void AttackTarget()
     {
-        //this calls the attack method from EnemyAttack
+        //TODO this calls the attack method from EnemyAttack, rework and maybe place in attack script/enemy script
         animator.SetBool(animatorBoolAttack, true);
     }
 

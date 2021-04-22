@@ -19,31 +19,22 @@ public class Weapon : MonoBehaviour
     [SerializeField] Camera FPCamera;   //TODO serialzized for debugging purposes
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
+    [SerializeField] Ammo ammoSlot;
 
     [SerializeField] string containerName = "ContainerForRuntime";
     GameObject container;
 
     private void Start()
     {
-        mouse = Mouse.current;
         FPCamera = GetComponentInParent<Camera>();
 
         FindRuntimeContainer();
     }
 
 
-    void Update()
-    {
-        //if(mouse.leftButton.isPressed)
-        if(mouse.leftButton.wasPressedThisFrame)
-        {
-            WeaponAttack();
-        }
-    }
-
-
 
     //custom methods
+
     //TODO move this functionality to the game manager
     private void FindRuntimeContainer()
     {
@@ -56,8 +47,11 @@ public class Weapon : MonoBehaviour
     }
 
 
-    private void WeaponAttack()
+    public void WeaponAttack()
     {
+        if (ammoSlot.AmmoAmount <= 0) return;
+
+        ammoSlot.ReduceAmmoAmount();
         muzzleFlash.Play();
 
         RaycastHit hit;
@@ -69,7 +63,7 @@ public class Weapon : MonoBehaviour
 
             EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
             if (target != null)
-                target.ReduceHealth(weaponDamage);
+                target.TakeDamage(weaponDamage);
         }
     }//end of WeaponAttack()
 
