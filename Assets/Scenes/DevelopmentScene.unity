@@ -328,7 +328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &675348635
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1433,6 +1433,14 @@ PrefabInstance:
       propertyPath: gameOverCanvas
       value: 
       objectReference: {fileID: 675348638}
+    - target: {fileID: 1321002160142636524, guid: 8338d57ec38516b4898eeb42553cf7ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526740159487004844, guid: 8338d57ec38516b4898eeb42553cf7ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4673665387657195515, guid: 8338d57ec38516b4898eeb42553cf7ee, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1480,6 +1488,10 @@ PrefabInstance:
     - target: {fileID: 4673665387657688031, guid: 8338d57ec38516b4898eeb42553cf7ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188934072605629693, guid: 8338d57ec38516b4898eeb42553cf7ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8338d57ec38516b4898eeb42553cf7ee, type: 3}
@@ -2045,10 +2057,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2132769508603024719, guid: 78ac4466417b7ee48b9ba652323b7357, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 499841554}
     - target: {fileID: 5205535613614369004, guid: 78ac4466417b7ee48b9ba652323b7357, type: 3}
       propertyPath: m_Name
       value: Enemy

@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427f759c46572b940b34e9a05a74dedf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 10
+  maxHealthPoints: 100
 --- !u!114 &2132769508603024719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c3a415368970e408c556eba267cc89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
 --- !u!114 &5205535613614369015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   chaseRange: 5
+  turnSpeed: 5
 --- !u!95 &2767094073895082736
 Animator:
   serializedVersion: 3

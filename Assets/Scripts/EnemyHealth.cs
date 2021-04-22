@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour
     public static Action DamageTaken;
 
 
-    [SerializeField] int maxHealthPoints = 10;
+    [SerializeField] int maxHealthPoints = 100;
 
     private int currentHealthPoints;
 

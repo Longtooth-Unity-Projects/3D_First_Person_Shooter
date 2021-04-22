@@ -38,10 +38,26 @@
                     "interactions": ""
                 },
                 {
-                    "name": "WeaponSwitch",
+                    "name": "WeaponSelect",
                     "type": "Button",
                     "id": "6e26c4f6-5d62-4e57-ad28-b4c97e673055",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "WeaponScroll",
+                    "type": "Value",
+                    "id": "1c3a4885-c3df-42ec-9a76-9a88beda3e73",
+                    "expectedControlType": "Vector2",
+                    "processors": "NormalizeVector2",
+                    "interactions": ""
+                },
+                {
+                    "name": "TestAction",
+                    "type": "Value",
+                    "id": "e69350a0-ffd6-439f-b303-2cf3c46bf959",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 }
@@ -281,13 +297,90 @@
                 {
                     "name": "",
                     "id": "b6bb0d5a-94fe-4217-8fd6-b4f52357c5ee",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "WeaponSelect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "705f2cfe-f20e-4e35-9a85-889205a4f0a3",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "WeaponSelect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6adb80c2-ec87-41e5-9400-26838015196e",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "WeaponSelect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "559a5261-8890-49c7-a8df-451c876a18c7",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "WeaponSelect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c4b60b6b-88d9-4eb4-9842-327f868a2915",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponScroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bfa4a345-b330-4b57-8462-9b19abbdddb4",
                     "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "WeaponSwitch",
+                    "action": "TestAction",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "79dc4cb9-e06b-4791-a42b-e5cec1b56540",
+                    "path": "1DAxis(whichSideWins=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestAction",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "e9deaf69-149b-4fe1-a51d-709b94a2b945",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestAction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

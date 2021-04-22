@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 2914407474831662499}
   m_LocalRotation: {x: -0.029736135, y: -0.7366775, z: 0.027248144, w: 0.6750405}
   m_LocalPosition: {x: 0.17, y: -0.149, z: 0.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 2914407474831425921}
   - {fileID: 2914407474831425925}
@@ -133,8 +133,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponRange: 100
-  weaponDamage: 1
-  FPCamera: {fileID: 0}
+  weaponDamage: 25
+  shotDelay: 0.5
+  zoomedInFOV: 35
+  zoomedMouse_X_Sensitivity: 1
+  zoomedMouse_Y_Sensitivity: 1
   muzzleFlash: {fileID: 7781827315373953215}
   hitEffect: {fileID: 1443281476857249794, guid: d4539b2255a86504d8e986ae8ef043cf, type: 3}
   ammoSlot: {fileID: 0}

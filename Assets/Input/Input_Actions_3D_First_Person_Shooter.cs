@@ -51,10 +51,26 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""WeaponSwitch"",
+                    ""name"": ""WeaponSelect"",
                     ""type"": ""Button"",
                     ""id"": ""6e26c4f6-5d62-4e57-ad28-b4c97e673055"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""WeaponScroll"",
+                    ""type"": ""Value"",
+                    ""id"": ""1c3a4885-c3df-42ec-9a76-9a88beda3e73"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": ""NormalizeVector2"",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TestAction"",
+                    ""type"": ""Value"",
+                    ""id"": ""e69350a0-ffd6-439f-b303-2cf3c46bf959"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -294,13 +310,90 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
                 {
                     ""name"": """",
                     ""id"": ""b6bb0d5a-94fe-4217-8fd6-b4f52357c5ee"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""WeaponSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""705f2cfe-f20e-4e35-9a85-889205a4f0a3"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""WeaponSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6adb80c2-ec87-41e5-9400-26838015196e"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""WeaponSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""559a5261-8890-49c7-a8df-451c876a18c7"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""WeaponSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4b60b6b-88d9-4eb4-9842-327f868a2915"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponScroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bfa4a345-b330-4b57-8462-9b19abbdddb4"",
                     ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""WeaponSwitch"",
+                    ""action"": ""TestAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""79dc4cb9-e06b-4791-a42b-e5cec1b56540"",
+                    ""path"": ""1DAxis(whichSideWins=1)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TestAction"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""e9deaf69-149b-4fe1-a51d-709b94a2b945"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TestAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -880,7 +973,9 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
-        m_Player_WeaponSwitch = m_Player.FindAction("WeaponSwitch", throwIfNotFound: true);
+        m_Player_WeaponSelect = m_Player.FindAction("WeaponSelect", throwIfNotFound: true);
+        m_Player_WeaponScroll = m_Player.FindAction("WeaponScroll", throwIfNotFound: true);
+        m_Player_TestAction = m_Player.FindAction("TestAction", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -946,7 +1041,9 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Zoom;
-    private readonly InputAction m_Player_WeaponSwitch;
+    private readonly InputAction m_Player_WeaponSelect;
+    private readonly InputAction m_Player_WeaponScroll;
+    private readonly InputAction m_Player_TestAction;
     public struct PlayerActions
     {
         private @Input_Actions_3D_First_Person_Shooter m_Wrapper;
@@ -955,7 +1052,9 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
-        public InputAction @WeaponSwitch => m_Wrapper.m_Player_WeaponSwitch;
+        public InputAction @WeaponSelect => m_Wrapper.m_Player_WeaponSelect;
+        public InputAction @WeaponScroll => m_Wrapper.m_Player_WeaponScroll;
+        public InputAction @TestAction => m_Wrapper.m_Player_TestAction;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -977,9 +1076,15 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
                 @Zoom.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoom;
                 @Zoom.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoom;
                 @Zoom.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoom;
-                @WeaponSwitch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeaponSwitch;
-                @WeaponSwitch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeaponSwitch;
-                @WeaponSwitch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeaponSwitch;
+                @WeaponSelect.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeaponSelect;
+                @WeaponSelect.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeaponSelect;
+                @WeaponSelect.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeaponSelect;
+                @WeaponScroll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeaponScroll;
+                @WeaponScroll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeaponScroll;
+                @WeaponScroll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeaponScroll;
+                @TestAction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTestAction;
+                @TestAction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTestAction;
+                @TestAction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTestAction;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -996,9 +1101,15 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
                 @Zoom.started += instance.OnZoom;
                 @Zoom.performed += instance.OnZoom;
                 @Zoom.canceled += instance.OnZoom;
-                @WeaponSwitch.started += instance.OnWeaponSwitch;
-                @WeaponSwitch.performed += instance.OnWeaponSwitch;
-                @WeaponSwitch.canceled += instance.OnWeaponSwitch;
+                @WeaponSelect.started += instance.OnWeaponSelect;
+                @WeaponSelect.performed += instance.OnWeaponSelect;
+                @WeaponSelect.canceled += instance.OnWeaponSelect;
+                @WeaponScroll.started += instance.OnWeaponScroll;
+                @WeaponScroll.performed += instance.OnWeaponScroll;
+                @WeaponScroll.canceled += instance.OnWeaponScroll;
+                @TestAction.started += instance.OnTestAction;
+                @TestAction.performed += instance.OnTestAction;
+                @TestAction.canceled += instance.OnTestAction;
             }
         }
     }
@@ -1159,7 +1270,9 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
-        void OnWeaponSwitch(InputAction.CallbackContext context);
+        void OnWeaponSelect(InputAction.CallbackContext context);
+        void OnWeaponScroll(InputAction.CallbackContext context);
+        void OnTestAction(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

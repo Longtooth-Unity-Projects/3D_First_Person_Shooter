@@ -132,9 +132,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab17afe88de059249ad89f042c6a8c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRange: 100
-  weaponDamage: 1
-  FPCamera: {fileID: 0}
+  weaponRange: 25
+  weaponDamage: 50
+  shotDelay: 1
+  zoomedInFOV: 45
+  zoomedMouse_X_Sensitivity: 1
+  zoomedMouse_Y_Sensitivity: 1
   muzzleFlash: {fileID: 7781827315373953215}
   hitEffect: {fileID: 1443281476857249794, guid: d4539b2255a86504d8e986ae8ef043cf, type: 3}
   ammoSlot: {fileID: 0}
