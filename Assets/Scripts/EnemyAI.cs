@@ -15,40 +15,66 @@ public class EnemyAI : MonoBehaviour
 
     //cached references
     private NavMeshAgent navMeshAgent;
+    private Enemy me;
 
     private Animator animator;
+    private string animatorBoolAttack = "attack";
     private string animatorTriggerMove = "move";
     private string animatorTriggerIdle = "idle";
-    private string animatorBoolAttack = "attack";
+    private string animatorTriggerDie = "die";
+
+
+
+
+
+
+
 
     private void OnEnable()
     {
-        EnemyHealth.DamageTaken += OnDamageTaken;
+        Enemy.DamageTaken += OnDamageTaken;
+        Enemy.Died += OnDeath;
     }
+
 
     void Start()
     {
+        me = GetComponent<Enemy>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        target = FindObjectOfType<Player>().transform;
     }
 
    
     void Update()
     {
-        distanceToTarget = Vector3.Distance(target.position, transform.position);
+        if(me.isAlive)
+        {
+            distanceToTarget = Vector3.Distance(target.position, transform.position);
 
-        if (isProvoked)
-            EngageTarget();
-        else if (distanceToTarget <= chaseRange)
-            isProvoked = true;
+            if (isProvoked)
+                EngageTarget();
+            else if (distanceToTarget <= chaseRange)
+                isProvoked = true;
+        }
     }
+
 
     private void OnDisable()
     {
-        EnemyHealth.DamageTaken -= OnDamageTaken;
+        Enemy.DamageTaken -= OnDamageTaken;
+        Enemy.Died -= OnDeath;
     }
 
-    //custom methods
+
+
+
+
+
+
+
+
+    //***********custom methods**********
     public void OnDamageTaken()
     {
         isProvoked = true;
@@ -78,7 +104,7 @@ public class EnemyAI : MonoBehaviour
 
     private void AttackTarget()
     {
-        //TODO this calls the attack method from EnemyAttack, rework and maybe place in attack script/enemy script
+        //TODO this calls the attack method from Enemy, rework and maybe place in attack script/enemy script
         animator.SetBool(animatorBoolAttack, true);
     }
 
@@ -90,6 +116,11 @@ public class EnemyAI : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRoation, Time.deltaTime * turnSpeed);
     }
 
+
+    private void OnDeath()
+    {
+        animator.SetTrigger(animatorTriggerDie);
+    }
 
     //TODO debugging and testing
     private void OnDrawGizmosSelected()

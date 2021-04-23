@@ -6,10 +6,8 @@ using UnityEngine;
 //TODO add this functionality to the weapon class
 public class Ammo : MonoBehaviour
 {
-    //[SerializeField] private int ammoAmount = 10;
-    //public int AmmoAmount { get { return 0; } }
-
     [SerializeField] AmmoSlot[] ammoSlots;
+
 
     [System.Serializable]
     private class AmmoSlot
@@ -28,6 +26,11 @@ public class Ammo : MonoBehaviour
     public void ReduceAmmoAmount(AmmoType ammoType)
     {
         GetAmmoSlot(ammoType).ammoAmount--;
+    }
+
+    public void IncreaseAmmoAmount(AmmoType ammoType, int amountToIncrease)
+    {
+        GetAmmoSlot(ammoType).ammoAmount += amountToIncrease;
     }
 
     private AmmoSlot GetAmmoSlot(AmmoType ammoType)

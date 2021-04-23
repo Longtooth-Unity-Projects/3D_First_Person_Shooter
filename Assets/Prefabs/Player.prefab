@@ -178,15 +178,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4673665387657688031}
   - component: {fileID: 4673665387667397145}
-  - component: {fileID: 6137205874639738605}
-  - component: {fileID: 735858107641851806}
   - component: {fileID: 3830706012884832053}
+  - component: {fileID: 6137205874639738605}
   - component: {fileID: 8829041877029291220}
   - component: {fileID: 4673665387652156573}
   - component: {fileID: 4673665387661257821}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -275,6 +274,18 @@ MonoBehaviour:
     slowDownRate: 20
     airControl: 0
     shellOffset: 0
+--- !u!114 &3830706012884832053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4673665387657195515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec79b328f7246c469228c1dfe9ab204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6137205874639738605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,31 +300,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMaxHealth: 100
   playerCurrentHealth: 0
---- !u!114 &735858107641851806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4673665387657195515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4fcbf24b6e79854f84b5828088f4040, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameOverCanvas: {fileID: 0}
---- !u!114 &3830706012884832053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4673665387657195515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fec79b328f7246c469228c1dfe9ab204, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8829041877029291220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec86b6f1b725fae469f0362d6f7d3405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoAmount: 10
+  ammoSlots: []
 --- !u!54 &4673665387652156573
 Rigidbody:
   m_ObjectHideFlags: 0
