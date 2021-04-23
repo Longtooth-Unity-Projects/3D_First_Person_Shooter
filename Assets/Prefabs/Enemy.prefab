@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5205535613614369014}
-  - component: {fileID: 7496055807805465837}
   - component: {fileID: 5205535613614369015}
   - component: {fileID: 2767094073895082736}
   - component: {fileID: 5205535613614369001}
@@ -37,20 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7496055807805465837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5205535613614369004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 427f759c46572b940b34e9a05a74dedf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealthPoints: 100
-  damage: 10
 --- !u!114 &5205535613614369015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b6f3721a8752c48a439aa2f9c58493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealthPoints: 100
+  damage: 10
   target: {fileID: 0}
   chaseRange: 5
   turnSpeed: 5
