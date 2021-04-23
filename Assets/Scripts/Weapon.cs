@@ -28,6 +28,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private GameObject hitEffect;
     [SerializeField] private Ammo ammoSlot;
+    [SerializeField] private AmmoType ammoType;
     private Camera fpsCamera;
     private RigidbodyFirstPersonController fpsController;
 
@@ -58,9 +59,9 @@ public class Weapon : MonoBehaviour
     //custom methods
     public IEnumerator WeaponAttack()
     {
-        if (ammoSlot.AmmoAmount > 0 && canShoot)
+        if (ammoSlot.GetCurrentAmmoAmount(ammoType) > 0 && canShoot)
         {
-            ammoSlot.ReduceAmmoAmount();
+            ammoSlot.ReduceAmmoAmount(ammoType);
             muzzleFlash.Play();
 
             RaycastHit hit;

@@ -63,7 +63,7 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
                     ""type"": ""Value"",
                     ""id"": ""1c3a4885-c3df-42ec-9a76-9a88beda3e73"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": ""NormalizeVector2"",
+                    ""processors"": """",
                     ""interactions"": """"
                 },
                 {
@@ -356,7 +356,7 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
                     ""id"": ""c4b60b6b-88d9-4eb4-9842-327f868a2915"",
                     ""path"": ""<Mouse>/scroll"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""NormalizeVector2,InvertVector2(invertX=false)"",
                     ""groups"": """",
                     ""action"": ""WeaponScroll"",
                     ""isComposite"": false,

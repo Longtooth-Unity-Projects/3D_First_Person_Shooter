@@ -48,19 +48,16 @@ public class WeaponSwitcher : MonoBehaviour
     {
         previousWeaponIndex = currentWeaponIndex;
 
-        if (yAxisValue > 0)         
-            if (currentWeaponIndex >= numOfWeapons - 1) //guarding against out of index errors
-                currentWeaponIndex = 0;
-            else
+        if (yAxisValue > 0)
+            if (currentWeaponIndex < numOfWeapons - 1) //guarding against out of index errors
                 ++currentWeaponIndex;
+            else return;
 
-        if (yAxisValue < 0)         
-            if (currentWeaponIndex <= 0)                        //guarding against out of index errors
-                currentWeaponIndex = numOfWeapons - 1;  
-            else
+        if (yAxisValue < 0)
+            if (currentWeaponIndex > 0)                //guarding against out of index errors
                 --currentWeaponIndex;
-
-        if (previousWeaponIndex != currentWeaponIndex)
-            SetWeaponActive();
+            else return;
+        
+        SetWeaponActive();
     }
 }
