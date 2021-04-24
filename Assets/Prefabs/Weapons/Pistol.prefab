@@ -141,6 +141,7 @@ MonoBehaviour:
   muzzleFlash: {fileID: 7781827315373953215}
   hitEffect: {fileID: 1443281476857249794, guid: d4539b2255a86504d8e986ae8ef043cf, type: 3}
   ammoSlot: {fileID: 0}
+  ammoType: 0
   containerName: ContainerForRuntime
 --- !u!33 &2914407474832753059
 MeshFilter:
@@ -169,7 +170,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3ce491a07acc387469da2b2b690a64d4, type: 2}
+  - {fileID: 2100000, guid: dbcee8262ea644e44a201db125c62be9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
