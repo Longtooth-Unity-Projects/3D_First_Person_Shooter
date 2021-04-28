@@ -31,6 +31,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2089761412}
   - {fileID: 7814682504917833788}
   m_Father: {fileID: 4673665387657688031}
   m_RootOrder: 0
@@ -181,6 +182,7 @@ GameObject:
   - component: {fileID: 3830706012884832053}
   - component: {fileID: 6137205874639738605}
   - component: {fileID: 8829041877029291220}
+  - component: {fileID: 272062079356586299}
   - component: {fileID: 4673665387652156573}
   - component: {fileID: 4673665387661257821}
   m_Layer: 0
@@ -300,6 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMaxHealth: 100
   playerCurrentHealth: 0
+  healthText: {fileID: 0}
 --- !u!114 &8829041877029291220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +315,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec86b6f1b725fae469f0362d6f7d3405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoSlots: []
+  ammoSlots:
+  - ammoType: 0
+    ammoAmount: 19
+  - ammoType: 2
+    ammoAmount: 6
+  - ammoType: 1
+    ammoAmount: 20
+--- !u!114 &272062079356586299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4673665387657195515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad4b28cd05f2454e82608e661d85c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodSplatter: {fileID: 0}
+  impactime: 0.3
 --- !u!54 &4673665387652156573
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -375,7 +398,7 @@ Transform:
   - {fileID: 1321002160142731724}
   - {fileID: 8188934072606114013}
   m_Father: {fileID: 4673665387657688029}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6286435836603242129
 MonoBehaviour:
@@ -459,7 +482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2914407474831662499, guid: f1335e18fee6198478da9086a685b98b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6473640854654410749, guid: f1335e18fee6198478da9086a685b98b, type: 3}
       propertyPath: FPCamera
@@ -554,6 +577,80 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2914407474831425923, guid: e5ea46764774ee74ca62a2169ce09a61, type: 3}
   m_PrefabInstance: {fileID: 4190364565982595151}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4992675193407633558
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4673665387657688029}
+    m_Modifications:
+    - target: {fileID: 4992675192661099026, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992675192661099026, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.452
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992675192661099026, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.327
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992675192661099026, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.412
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992675192661099026, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992675192661099026, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992675192661099026, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992675192661099026, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992675192661099026, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992675192661099026, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992675192661099026, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992675192661099027, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+      propertyPath: m_Range
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992675192661099027, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+      propertyPath: m_SpotAngle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992675192661099027, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992675192661099029, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+      propertyPath: m_Name
+      value: Flashlight
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+--- !u!4 &2089761412 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4992675192661099026, guid: 8383bf72a3b1e2d47bbefaecca52628b, type: 3}
+  m_PrefabInstance: {fileID: 4992675193407633558}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6473640853877670238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -615,7 +712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2914407474831662499, guid: 3e4b3e0b29c74e04fa979f15d7d0be8e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6473640854654410749, guid: 3e4b3e0b29c74e04fa979f15d7d0be8e, type: 3}
       propertyPath: FPCamera

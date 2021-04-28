@@ -84,6 +84,7 @@ public class Enemy : MonoBehaviour
         if (target == null) return;
 
         target.ReduceHealth(damage);
+        target.GetComponent<DisplayDamage>().ActivateBloodSplatter();
     }
 
 

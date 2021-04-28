@@ -31,6 +31,7 @@ public class Ammo : MonoBehaviour
     public void IncreaseAmmoAmount(AmmoType ammoType, int amountToIncrease)
     {
         GetAmmoSlot(ammoType).ammoAmount += amountToIncrease;
+        GetComponentInChildren<Weapon>().UpdateAmmoDisplay();
     }
 
     private AmmoSlot GetAmmoSlot(AmmoType ammoType)

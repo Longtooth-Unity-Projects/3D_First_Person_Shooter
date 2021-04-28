@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityStandardAssets.Characters.FirstPerson;
+using TMPro;
 
 public class Weapon : MonoBehaviour
 {
@@ -29,14 +30,20 @@ public class Weapon : MonoBehaviour
     [SerializeField] private GameObject hitEffect;
     [SerializeField] private Ammo ammoSlot;
     [SerializeField] private AmmoType ammoType;
+
     private Camera fpsCamera;
     private RigidbodyFirstPersonController fpsController;
 
+    //TODO move ammocount text to game manager
+    [SerializeField] TextMeshProUGUI ammoCountText;
     [SerializeField] string containerName = "ContainerForRuntime";
     GameObject container;
 
 
-
+    private void OnEnable()
+    {
+        UpdateAmmoDisplay();
+    }
 
     private void Start()
     {
@@ -62,6 +69,7 @@ public class Weapon : MonoBehaviour
         if (ammoSlot.GetCurrentAmmoAmount(ammoType) > 0 && canShoot)
         {
             ammoSlot.ReduceAmmoAmount(ammoType);
+            UpdateAmmoDisplay();
             muzzleFlash.Play();
 
             RaycastHit hit;
@@ -113,6 +121,14 @@ public class Weapon : MonoBehaviour
 
 
     //***********utility methods*****************
+    public void UpdateAmmoDisplay()
+    {
+        ammoCountText.text = $"Ammo: {ammoSlot.GetCurrentAmmoAmount(ammoType)}";
+    }
+
+
+
+
     //TODO move this functionality to the game manager
     private void FindRuntimeContainer()
     {
