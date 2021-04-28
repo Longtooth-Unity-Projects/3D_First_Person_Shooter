@@ -67,6 +67,14 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Flashlight"",
+                    ""type"": ""Button"",
+                    ""id"": ""429ea1f9-d4df-4692-923a-3d4a3cc8c9b8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""TestAction"",
                     ""type"": ""Value"",
                     ""id"": ""e69350a0-ffd6-439f-b303-2cf3c46bf959"",
@@ -394,6 +402,17 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
                     ""action"": ""TestAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31e35695-9e52-4972-812b-0546e27e20ca"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Flashlight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -975,6 +994,7 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
         m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
         m_Player_WeaponSelect = m_Player.FindAction("WeaponSelect", throwIfNotFound: true);
         m_Player_WeaponScroll = m_Player.FindAction("WeaponScroll", throwIfNotFound: true);
+        m_Player_Flashlight = m_Player.FindAction("Flashlight", throwIfNotFound: true);
         m_Player_TestAction = m_Player.FindAction("TestAction", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1043,6 +1063,7 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
     private readonly InputAction m_Player_Zoom;
     private readonly InputAction m_Player_WeaponSelect;
     private readonly InputAction m_Player_WeaponScroll;
+    private readonly InputAction m_Player_Flashlight;
     private readonly InputAction m_Player_TestAction;
     public struct PlayerActions
     {
@@ -1054,6 +1075,7 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
         public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
         public InputAction @WeaponSelect => m_Wrapper.m_Player_WeaponSelect;
         public InputAction @WeaponScroll => m_Wrapper.m_Player_WeaponScroll;
+        public InputAction @Flashlight => m_Wrapper.m_Player_Flashlight;
         public InputAction @TestAction => m_Wrapper.m_Player_TestAction;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -1082,6 +1104,9 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
                 @WeaponScroll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeaponScroll;
                 @WeaponScroll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeaponScroll;
                 @WeaponScroll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeaponScroll;
+                @Flashlight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlashlight;
+                @Flashlight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlashlight;
+                @Flashlight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlashlight;
                 @TestAction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTestAction;
                 @TestAction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTestAction;
                 @TestAction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTestAction;
@@ -1107,6 +1132,9 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
                 @WeaponScroll.started += instance.OnWeaponScroll;
                 @WeaponScroll.performed += instance.OnWeaponScroll;
                 @WeaponScroll.canceled += instance.OnWeaponScroll;
+                @Flashlight.started += instance.OnFlashlight;
+                @Flashlight.performed += instance.OnFlashlight;
+                @Flashlight.canceled += instance.OnFlashlight;
                 @TestAction.started += instance.OnTestAction;
                 @TestAction.performed += instance.OnTestAction;
                 @TestAction.canceled += instance.OnTestAction;
@@ -1272,6 +1300,7 @@ public class @Input_Actions_3D_First_Person_Shooter : IInputActionCollection, ID
         void OnZoom(InputAction.CallbackContext context);
         void OnWeaponSelect(InputAction.CallbackContext context);
         void OnWeaponScroll(InputAction.CallbackContext context);
+        void OnFlashlight(InputAction.CallbackContext context);
         void OnTestAction(InputAction.CallbackContext context);
     }
     public interface IUIActions

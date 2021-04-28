@@ -11,7 +11,7 @@ public class Flashlight : MonoBehaviour
 
     private float maxAngle = 60f;
     private float maxIntensity = 10f;
-    private bool isActivated = true;
+    private bool isActivated = false;
 
     //cached references
     Light lightSource;
@@ -21,6 +21,9 @@ public class Flashlight : MonoBehaviour
         lightSource = GetComponent<Light>();
         maxAngle = lightSource.spotAngle;
         maxIntensity = lightSource.intensity;
+
+        isActivated = false;
+        lightSource.enabled = false;
     }
 
     private void Update()
@@ -55,5 +58,11 @@ public class Flashlight : MonoBehaviour
             lightSource.intensity = maxIntensity;
         else
             lightSource.intensity = newIntensity;
+    }
+
+    public void ToggleLight()
+    {
+        isActivated = !isActivated;
+        lightSource.enabled = isActivated;
     }
 }

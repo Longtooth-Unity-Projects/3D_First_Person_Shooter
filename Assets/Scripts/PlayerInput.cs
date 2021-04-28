@@ -10,6 +10,7 @@ public class PlayerInput : MonoBehaviour, Input_Actions_3D_First_Person_Shooter.
 
     Weapon weapon;
     WeaponSwitcher weaponSwitcher;
+    Flashlight flashlight;
 
 
     private void Awake()
@@ -29,7 +30,7 @@ public class PlayerInput : MonoBehaviour, Input_Actions_3D_First_Person_Shooter.
 
     private void Start()
     {
-        GetActiveWeaponInfo();
+        GetActivePlayerInfo();
     }
 
 
@@ -100,7 +101,7 @@ public class PlayerInput : MonoBehaviour, Input_Actions_3D_First_Person_Shooter.
         {
             //use the name of the control passed in instead of checking for each keystroke
             weaponSwitcher.WeaponSelect(int.Parse(context.control.name) - 1);
-            GetActiveWeaponInfo();
+            GetActivePlayerInfo();
         }
     }
 
@@ -110,7 +111,7 @@ public class PlayerInput : MonoBehaviour, Input_Actions_3D_First_Person_Shooter.
         if (context.performed)
         {
             weaponSwitcher.WeaponScroll(context.ReadValue<Vector2>().y);
-            GetActiveWeaponInfo();
+            GetActivePlayerInfo();
         }
     }
 
@@ -139,6 +140,16 @@ public class PlayerInput : MonoBehaviour, Input_Actions_3D_First_Person_Shooter.
     }
 
 
+
+    public void OnFlashlight(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            flashlight.ToggleLight();
+    }
+
+
+
+
     //****************custom methods***************
     public void AdjustMouseSensitivity(float newSensitivity)
     {
@@ -149,46 +160,12 @@ public class PlayerInput : MonoBehaviour, Input_Actions_3D_First_Person_Shooter.
 
 
 
-
-
-
     //***************utility methods*******************
-    private void GetActiveWeaponInfo()
+    private void GetActivePlayerInfo()
     {
         weapon = GetComponentInChildren<Weapon>();
         weaponSwitcher = GetComponentInChildren<WeaponSwitcher>();
+        flashlight = GetComponentInChildren<Flashlight>();
     }
 
-
-
-
-
-
-    private void ControlsEnable()
-    {
-        controls.Player.Fire.performed += OnFire;
-        controls.Player.Look.performed += OnLook;
-        controls.Player.Move.performed += OnMove;
-        controls.Player.Zoom.performed += OnZoom;
-        controls.Player.WeaponSelect.performed += OnWeaponSelect;
-        controls.Player.WeaponScroll.performed += OnWeaponScroll;
-
-        controls.Player.TestAction.performed += OnTestAction;
-
-        controls.Player.Enable();
-    }
-
-    private void ControlsDisable()
-    {
-        controls.Player.Fire.performed -= OnFire;
-        controls.Player.Look.performed -= OnLook;
-        controls.Player.Move.performed -= OnMove;
-        controls.Player.Zoom.performed -= OnZoom;
-        controls.Player.WeaponSelect.performed -= OnWeaponSelect;
-        controls.Player.WeaponScroll.performed -= OnWeaponScroll;
-
-        controls.Player.TestAction.performed -= OnTestAction;
-
-        controls.Player.Disable();
-    }
-}
+}//end of class
