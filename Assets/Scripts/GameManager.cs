@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,9 +9,9 @@ public class GameManager : MonoBehaviour
 
 
     //cached references
-    [SerializeField] private Canvas gameOverCanvas;
-    private AudioSource[] audioSources;
-
+    [SerializeField] private Canvas gameOverCanvas; //TODO remove this to a UI manager
+    [SerializeField] private Canvas gameBeginCanvas; //TODO remove this to a UI manager
+    private AudioSource[] allAudioSources;
 
     private void Awake()
     {
@@ -28,23 +29,37 @@ public class GameManager : MonoBehaviour
     
     private void Start()
     {
-        audioSources = FindObjectsOfType<AudioSource>(true);
+        allAudioSources = FindObjectsOfType<AudioSource>(true);
         gameOverCanvas.enabled = false;
+        gameBeginCanvas.enabled = false;
+
+        //PauseAndLoadCanvas(gameBeginCanvas);
+/*        gameBeginCanvas.enabled = true;
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        StopAllAudio(allAudioSources);*/
+
     }
 
 
     public void HandlePlayerDeath()
     {
-        gameOverCanvas.enabled = true;
+        PauseAndLoadCanvas(gameOverCanvas);
+    }
+
+    private void PauseAndLoadCanvas(Canvas canvasToLoad)
+    {
+        canvasToLoad.enabled = true;
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        StopAllAudio();
+        StopAllAudio(allAudioSources);
     }
 
 
-    private void StopAllAudio()
+    private void StopAllAudio(AudioSource[] audioSources)
     {
         foreach (AudioSource source in audioSources)
         {

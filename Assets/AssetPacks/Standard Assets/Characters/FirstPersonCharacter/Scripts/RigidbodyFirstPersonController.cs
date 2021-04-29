@@ -20,6 +20,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             public AnimationCurve SlopeCurveModifier = new AnimationCurve(new Keyframe(-90.0f, 1.0f), new Keyframe(0.0f, 1.0f), new Keyframe(90.0f, 0.0f));
             [HideInInspector] public float CurrentTargetSpeed = 8f;
 
+
 #if !MOBILE_INPUT
             private bool m_Running;
 #endif
@@ -27,24 +28,28 @@ namespace UnityStandardAssets.Characters.FirstPerson
             public void UpdateDesiredTargetSpeed(Vector2 input)
             {
 	            if (input == Vector2.zero) return;
-				if (input.x > 0 || input.x < 0)
-				{
-					//strafe
-					CurrentTargetSpeed = StrafeSpeed;
-				}
-				if (input.y < 0)
-				{
-					//backwards
-					CurrentTargetSpeed = BackwardSpeed;
-				}
-				if (input.y > 0)
+
+                if (input.x > 0 || input.x < 0)
+                {
+                    //strafe
+                    CurrentTargetSpeed = StrafeSpeed;
+                }
+
+                if (input.y < 0)
+                {
+                    //backwards
+                    CurrentTargetSpeed = BackwardSpeed;
+                }
+
+                if (input.y > 0)
 				{
 					//forwards
 					//handled last as if strafing and moving forward at the same time forwards speed should take precedence
 					CurrentTargetSpeed = ForwardSpeed;
 				}
+
 #if !MOBILE_INPUT
-	            if (Input.GetKey(RunKey))
+                if (Input.GetKey(RunKey))
 	            {
 		            CurrentTargetSpeed *= RunMultiplier;
 		            m_Running = true;
@@ -62,7 +67,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 get { return m_Running; }
             }
 #endif
-        }
+            
+
+
+
+
+        }//end of class movement settings
 
 
         [Serializable]
@@ -88,6 +98,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_YRotation;
         private Vector3 m_GroundContactNormal;
         private bool m_Jump, m_PreviouslyGrounded, m_Jumping, m_IsGrounded;
+
+        //TODO customization, rework later
+        public bool MovingForward { get; private set; }
+        public bool MovingBackward { get; private set; }
+        public bool Strafing { get; private set; }
 
 
         public Vector3 Velocity
@@ -116,6 +131,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 #endif
             }
         }
+
+
 
 
         private void Start()
@@ -218,6 +235,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     y = CrossPlatformInputManager.GetAxis("Vertical")
                 };
 			movementSettings.UpdateDesiredTargetSpeed(input);
+
+            SetMovementDirection(input);    //TODO customization, rework later
             return input;
         }
 
@@ -261,5 +280,33 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_Jumping = false;
             }
         }
-    }
-}
+
+        //TODO customization, rework later
+        private void SetMovementDirection(Vector2 input)
+        {
+            if (input == Vector2.zero)
+            {
+                MovingForward = false;
+                MovingBackward = false;
+                Strafing = false;
+                return;
+            }
+
+            if (input.x > 0 || input.x < 0)
+                Strafing = true;
+            else
+                Strafing = false;
+
+            if (input.y < 0)
+                MovingBackward = true;
+            else
+                MovingBackward = false;
+
+            if (input.y > 0)
+                MovingForward = true;
+            else
+                MovingForward = false;
+        }
+
+    }//end of class RigidbodyFirstPersonController
+}//end of namespace

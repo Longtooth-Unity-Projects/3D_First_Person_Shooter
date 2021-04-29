@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int maxHealthPoints = 100;
@@ -12,7 +13,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float chaseRange = 25f;
     [SerializeField] private float turnSpeed = 5f;
 
-    [SerializeField] private AudioClip soundIdle;
+    [SerializeField] private AudioClip soundStandingIdle;
+    [SerializeField] private AudioClip soundHitting;
 
     private int currentHealthPoints;
     private bool isProvoked = false;
@@ -39,7 +41,7 @@ public class Enemy : MonoBehaviour
         target = FindObjectOfType<Player>();
         audioSource = GetComponent<AudioSource>();
 
-        StartNewSudioLoop(soundIdle);
+        StartNewSudioLoop(audioSource, soundStandingIdle);
 
         currentHealthPoints = maxHealthPoints;
         isDead = false;
@@ -77,16 +79,20 @@ public class Enemy : MonoBehaviour
     {
         isDead = true;
         animator.SetTrigger(animatorTriggerDie);
-        StartNewSudioLoop(null);
+        StartNewSudioLoop(audioSource, null);
 
         enabled = false;
         navMeshAgent.enabled = false;
     }
 
 
-    private void StartNewSudioLoop(AudioClip clipToStart)
+    private void StartNewSudioLoop(AudioSource audioSource, AudioClip clipToStart)
     {
-        if(clipToStart == null)
+        //dont need to reinitiate since it is a loop
+        if (audioSource.isPlaying.Equals(clipToStart))
+            return;
+
+        if (clipToStart == null)
         {
             audioSource.Stop();
         }
@@ -95,7 +101,7 @@ public class Enemy : MonoBehaviour
             audioSource.Stop();
             audioSource.loop = true;
             audioSource.clip = clipToStart;
-            audioSource.Play();
+            audioSource.PlayDelayed(UnityEngine.Random.Range(0f, 2f));
         }
     }
 
@@ -110,6 +116,7 @@ public class Enemy : MonoBehaviour
 
         target.ReduceHealth(damage);
         target.GetComponent<DisplayDamage>().ActivateBloodSplatter();
+        audioSource.PlayOneShot(soundHitting);
     }
 
 
