@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityStandardAssets.Characters.FirstPerson;
 using TMPro;
 
+[RequireComponent(typeof(AudioSource))]
 public class Weapon : MonoBehaviour
 {
     [Header("Basic Weapon Stats")]
@@ -27,7 +28,10 @@ public class Weapon : MonoBehaviour
 
     //cached references
     [SerializeField] private ParticleSystem muzzleFlash;
+    [SerializeField] private AudioClip soundGunshot;
     [SerializeField] private GameObject hitEffect;
+
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private Ammo ammoSlot;
     [SerializeField] private AmmoType ammoType;
 
@@ -47,6 +51,7 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         fpsCamera = GetComponentInParent<Camera>();
         fpsController = GetComponentInParent<RigidbodyFirstPersonController>();
 
@@ -71,12 +76,12 @@ public class Weapon : MonoBehaviour
             ammoSlot.ReduceAmmoAmount(ammoType);
             UpdateAmmoDisplay();
             muzzleFlash.Play();
+            audioSource.PlayOneShot(soundGunshot);
+
 
             RaycastHit hit;
             if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, weaponRange))
             {
-                Debug.Log($"{name} shooting... hit {hit.transform.name}");
-
                 CreateHitEffect(hit);
 
                 Enemy target = hit.transform.GetComponent<Enemy>();

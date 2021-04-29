@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float chaseRange = 25f;
     [SerializeField] private float turnSpeed = 5f;
 
+    [SerializeField] private AudioClip soundIdle;
+
     private int currentHealthPoints;
     private bool isProvoked = false;
     private float distanceToTarget = Mathf.Infinity;
@@ -20,7 +22,7 @@ public class Enemy : MonoBehaviour
     //cached references
     private NavMeshAgent navMeshAgent;
     private Player target;
-
+    private AudioSource audioSource;
 
     private Animator animator;
     private string animatorBoolAttack = "attack";
@@ -35,6 +37,9 @@ public class Enemy : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         target = FindObjectOfType<Player>();
+        audioSource = GetComponent<AudioSource>();
+
+        StartNewSudioLoop(soundIdle);
 
         currentHealthPoints = maxHealthPoints;
         isDead = false;
@@ -72,13 +77,33 @@ public class Enemy : MonoBehaviour
     {
         isDead = true;
         animator.SetTrigger(animatorTriggerDie);
+        StartNewSudioLoop(null);
 
         enabled = false;
         navMeshAgent.enabled = false;
     }
 
 
-    //TODO called from animation, decouple this
+    private void StartNewSudioLoop(AudioClip clipToStart)
+    {
+        if(clipToStart == null)
+        {
+            audioSource.Stop();
+        }
+        else
+        {
+            audioSource.Stop();
+            audioSource.loop = true;
+            audioSource.clip = clipToStart;
+            audioSource.Play();
+        }
+    }
+
+
+
+
+
+    //TODO called from animation, decouple this and attack from enemy class
     private void EnemyAttackHitEvent()
     {
         if (target == null) return;

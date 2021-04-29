@@ -303,6 +303,7 @@ MonoBehaviour:
   playerMaxHealth: 100
   playerCurrentHealth: 0
   healthText: {fileID: 0}
+  soundRunningGrass: {fileID: 8300000, guid: 24c6c056dfa0a0541b4bc8752d14ab76, type: 3}
 --- !u!114 &8829041877029291220
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,7 +7,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private int playerMaxHealth = 100;
     [SerializeField] private int playerCurrentHealth;   //TODO debuggin and testing
-    [SerializeField] TextMeshProUGUI healthText;
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private AudioClip soundRunningGrass;
 
     //cached references
     GameManager gameManager;
