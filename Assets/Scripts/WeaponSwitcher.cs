@@ -6,7 +6,6 @@ using UnityEngine;
 public class WeaponSwitcher : MonoBehaviour
 {
     [SerializeField] int currentWeaponIndex = 0;
-    private int previousWeaponIndex = 0;
     private int numOfWeapons = 0;
 
 
@@ -46,8 +45,6 @@ public class WeaponSwitcher : MonoBehaviour
 
     public void WeaponScroll(float yAxisValue)
     {
-        previousWeaponIndex = currentWeaponIndex;
-
         if (yAxisValue > 0)
             if (currentWeaponIndex < numOfWeapons - 1) //guarding against out of index errors
                 ++currentWeaponIndex;

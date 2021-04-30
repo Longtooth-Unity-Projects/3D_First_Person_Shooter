@@ -30,13 +30,14 @@ public class Weapon : MonoBehaviour
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private AudioClip soundGunshot;
     [SerializeField] private GameObject hitEffect;
-
-    [SerializeField] private AudioSource audioSource;
     [SerializeField] private Ammo ammoSlot;
     [SerializeField] private AmmoType ammoType;
 
+
     private Camera fpsCamera;
     private RigidbodyFirstPersonController fpsController;
+    private AudioSource audioSource;
+    private Animation anim;
 
     //TODO move ammocount text to game manager
     [SerializeField] TextMeshProUGUI ammoCountText;
@@ -54,6 +55,7 @@ public class Weapon : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         fpsCamera = GetComponentInParent<Camera>();
         fpsController = GetComponentInParent<RigidbodyFirstPersonController>();
+        anim = GetComponent<Animation>();
 
         defaultFOV = fpsCamera.fieldOfView;
         defaultMouse_X_Sensitiviy = fpsController.mouseLook.XSensitivity;
@@ -77,6 +79,8 @@ public class Weapon : MonoBehaviour
             UpdateAmmoDisplay();
             muzzleFlash.Play();
             audioSource.PlayOneShot(soundGunshot);
+            if(anim != null)
+                anim.Play();
 
 
             RaycastHit hit;
