@@ -30,19 +30,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        ProcessMovementSound();
-/*        if (rigidbodyFPC.Running)
-            Debug.Log("running");
-        if (rigidbodyFPC.Grounded)
-            Debug.Log("grounded");
-        if (rigidbodyFPC.Jumping)
-            Debug.Log("jumping");
-        if (rigidbodyFPC.MovingForward)
-            Debug.Log("moving forward");
-        if (rigidbodyFPC.MovingBackward)
-            Debug.Log("moving backward");
-        if (rigidbodyFPC.Strafing)
-            Debug.Log("strafing");*/        
+        ProcessMovementSound();       
     }
 
     private void ProcessMovementSound()

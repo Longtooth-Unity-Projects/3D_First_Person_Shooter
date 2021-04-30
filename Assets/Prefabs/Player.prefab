@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &1548211005
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062984712770607622}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03434937, y: 0.19232097, z: 0.9765621}
+  m_Center: {x: 0.000007629542, y: -0.060459647, z: 0.00985889}
 --- !u!82 &1750036741
 AudioSource:
   m_ObjectHideFlags: 0
@@ -121,6 +134,19 @@ MonoBehaviour:
   ammoType: 2
   ammoCountText: {fileID: 0}
   containerName: ContainerForRuntime
+--- !u!65 &1548211006
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144984648955505185}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2021205, y: 14.229949, z: 24.015709}
+  m_Center: {x: -0.0019531576, y: -6.133085, z: -2.3746781}
 --- !u!82 &8998142884181922327
 AudioSource:
   m_ObjectHideFlags: 0
@@ -242,6 +268,19 @@ MonoBehaviour:
   ammoType: 0
   ammoCountText: {fileID: 0}
   containerName: ContainerForRuntime
+--- !u!65 &1548211004
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4521252766428633133}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.033782385, y: 0.16676848, z: 0.7707256}
+  m_Center: {x: -0.0017652987, y: -0.036212504, z: -0.06259711}
 --- !u!82 &5365146974169562169
 AudioSource:
   m_ObjectHideFlags: 0
@@ -682,9 +721,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoSlots:
   - ammoType: 0
-    ammoAmount: 20
+    ammoAmount: 49
   - ammoType: 2
-    ammoAmount: 6
+    ammoAmount: 8
   - ammoType: 1
     ammoAmount: 30
 --- !u!114 &272062079356586299
@@ -1372,7 +1411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 2ef8ea3cf29d62a4d9d5eb6b0f7c8a06, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ef8ea3cf29d62a4d9d5eb6b0f7c8a06, type: 3}
