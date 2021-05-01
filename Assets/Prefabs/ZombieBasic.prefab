@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5205535613614369001}
   - component: {fileID: 5205535613614369002}
   - component: {fileID: 5205535613614369003}
+  - component: {fileID: -8308035009799678464}
   m_Layer: 0
   m_Name: ZombieBasic
   m_TagString: Untagged
@@ -261,10 +262,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.23
-  m_Height: 1.9
+  m_Radius: 0.19
+  m_Height: 1.62
   m_Direction: 1
-  m_Center: {x: 0, y: 0.85, z: 0}
+  m_Center: {x: 0, y: 0.69, z: -0.03}
 --- !u!195 &5205535613614369003
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -287,6 +288,19 @@ NavMeshAgent:
   m_BaseOffset: -0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!135 &-8308035009799678464
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5205535613614369004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.12
+  m_Center: {x: 0, y: 1.68, z: 0}
 --- !u!1001 &3564758849916620787
 PrefabInstance:
   m_ObjectHideFlags: 0

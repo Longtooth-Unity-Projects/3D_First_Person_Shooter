@@ -165,12 +165,13 @@ public class Enemy : MonoBehaviour
             ShambleTowards(destination);
     }
 
-    public void TakeDamage(int amountToReduce)
+    public void TakeHit(RaycastHit hit, int damageOfHit)
     {
         isProvoked = true;
-        currentHealthPoints -= amountToReduce;
+        currentHealthPoints -= damageOfHit;
 
-        if (currentHealthPoints <= 0)
+        //wear them down or hit the head
+        if (hit.collider is SphereCollider || currentHealthPoints <= 0)
             ProcessDeath();
     }
 
@@ -180,6 +181,8 @@ public class Enemy : MonoBehaviour
         SetEnemyAnimationState(EnemyState.dead);
         StartNewSudioLoop(audioSource, null);
 
+        GetComponent<CapsuleCollider>().enabled = false;
+        GetComponent<SphereCollider>().enabled = false;
         enabled = false;
         navMeshAgent.enabled = false;
     }

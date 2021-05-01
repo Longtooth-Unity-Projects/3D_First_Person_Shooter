@@ -90,7 +90,7 @@ public class Weapon : MonoBehaviour
 
                 Enemy target = hit.transform.GetComponent<Enemy>();
                 if (target != null)
-                    target.TakeDamage(weaponDamage);
+                    target.TakeHit(hit, weaponDamage);
             }
 
             canShoot = false;
