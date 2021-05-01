@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
 
 
     [Header("Movement Fields")]
-    [SerializeField] private float speedWalking = 0.45f;
+    [SerializeField] private float speedWalking = 0.4f;
     [SerializeField] private float speedRunning = 3.5f;
     [SerializeField] private float speedTurning = 5f;
     [SerializeField] private Transform directedDestination;

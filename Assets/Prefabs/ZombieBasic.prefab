@@ -53,7 +53,7 @@ MonoBehaviour:
   maxHealthPoints: 100
   damage: 10
   chaseRange: 8
-  speedWalking: 0.45
+  speedWalking: 0.4
   speedRunning: 3.5
   speedTurning: 5
   directedDestination: {fileID: 0}
